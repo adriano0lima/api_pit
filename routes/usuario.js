@@ -21,7 +21,7 @@ router.put("/usuario/login", async (req, res) => {
             });
         }else{
             return res.json({
-                mensagem: `Olá ${usuario.nome}!`,
+                mensagem: `Bem vindo !`,
                 usuario
 
             });
