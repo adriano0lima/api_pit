@@ -1,5 +1,9 @@
-const express = require("express");
+const express = require('express');
+const cors = require('cors');
+
 const app = express();
+app.use(cors()); // Isso permite acesso de qualquer origem
+
 
 app.use(express.json());
 
