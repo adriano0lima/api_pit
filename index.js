@@ -10,7 +10,7 @@ const Carrinho = require('./models/carrinho');
 
 require('./relacionamentos')
 
-database.sync();
+database.sync(true);
 
 
 
@@ -75,7 +75,7 @@ async function updateUsuario(dados) {
 
 //Usuario - Cadastrar e Login
 async function cadastrarUsuario(n, s, e, p) {
-    const consultaUsuario = await Usuario.findOne(e, { where: { email: e } });
+    const consultaUsuario = await Usuario.findAll({ where: { email: e } });
     if (!consultaUsuario == null) {
         return null
     } else {
@@ -85,7 +85,7 @@ async function cadastrarUsuario(n, s, e, p) {
 }
 
 async function loginUsuario(s, e) {
-    const consultaUsuario = await Usuario.findOne({ where: { email: e } });
+    const consultaUsuario = await Usuario.findAll({ where: { email: e } });
 
 
     if (!consultaUsuario) {
