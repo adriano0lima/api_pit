@@ -39,7 +39,7 @@ router.put("/usuario/cadastrar", async (req, res) => {
     let dados = req.body;
 
     try {
-        const usuario = await index.cadastrarUsuario(dados.nonme, dados.senha, dados.email, dados.idPerfil);
+        const usuario = await index.cadastrarUsuario(dados.nome, dados.senha, dados.email, dados.idPerfil);
         if (usuario == null) {
             return res.json({
                 mensagem: `E-mail já cadastrado`

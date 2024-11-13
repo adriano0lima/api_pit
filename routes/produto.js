@@ -34,6 +34,9 @@ router.get('/produto/:id', async (req, res) => {
 //Rota post -> setproduto
 router.post("/produto", async (req, res) => {
     let dados = req.body;
+    if (!dados.nome || !dados.preco || !dados.idCategoria) {
+        return res.status(400).json({ mensagem: "Dados incompletos" });
+    }
 
     try {
         const novoproduto = await index.setProduto(dados.nome, dados.preco, dados.idCategoria);
@@ -42,8 +45,9 @@ router.post("/produto", async (req, res) => {
             novoproduto
         });
     } catch (e) {
-        return res.json({
-            mensagem: `Erro: \n${e}\nproduto não cadastrado`
+        return res.status(500).json({
+            mensagem: `Erro: ${e}
+            produto não cadastrado`
         });
     }
 });
