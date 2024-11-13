@@ -10,7 +10,7 @@ const Carrinho = require('./models/carrinho');
 
 require('./relacionamentos')
 
-database.sync(true);
+database.sync();
 
 
 
