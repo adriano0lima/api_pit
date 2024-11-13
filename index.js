@@ -93,12 +93,12 @@ async function loginUsuario(s, e) {
     }
 
 
-    const senha = consultaUsuario.senha === s;
+    consultaUsuario = await Usuario.findAll({ where: { email: e, senha: s} })
 
-    if (senha) {
-        return consultaUsuario;
-    } else {
+    if (!consultaUsuario) {
         return false;
+    } else {
+        return consultaUsuario;
     }
 }
 
