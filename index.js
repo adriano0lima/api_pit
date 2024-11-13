@@ -131,6 +131,12 @@ async function updateProduto(dados) {
     const produto = await Produto.update(dados, { where: { id: dados.id } });
     return produto;
 }
+
+async function deleteProduto(i) {
+    const produto = await Produto.destroy({ where: { id: i } });
+
+    return (produto)
+}
 //------------------------------------------------------
 
 
@@ -236,6 +242,7 @@ module.exports = {
     getProduto,
     listProdutos,
     updateProduto,
+    deleteProduto,
 
     setCategoria,
     getCategoria,
