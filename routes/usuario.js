@@ -10,12 +10,12 @@ router.put("/usuario/login", async (req, res) => {
 
     try {
         const usuario = await index.loginUsuario(dados.senha, dados.email);
-        if (usuario == null) {
+        if (!usuario) {
             return res.json({
-                mensagem: `E-mail não cadastrado`
+                mensagem: `E-mail não cadastrado, efetue o cadastro`
             });
         }
-        if (usuario == null) {
+        if (usuario == false) {
             return res.json({
                 mensagem: `Senha incorreta`
             });

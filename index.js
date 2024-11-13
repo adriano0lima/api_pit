@@ -85,7 +85,7 @@ async function cadastrarUsuario(n, s, e, p) {
 }
 
 async function loginUsuario(s, e) {
-    const consultaUsuario = await Usuario.findAll({ where: { email: e } });
+    let consultaUsuario = await Usuario.findAll({ where: { email: e } });
 
 
     if (!consultaUsuario) {
