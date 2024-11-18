@@ -33,10 +33,10 @@ router.put("/carrinho", async (req, res) => {
     let dados = req.body;
 
     try {
-        const categoria = await index.updateCarrinho(dados);
+        const carrinho = await index.updateCarrinho(dados);
         return res.json({
             mensagem: "Carrinho Editado com sucesso",
-            categoria
+            carrinho
         });
     } catch (e) {
         return res.json({
@@ -52,10 +52,10 @@ router.put("/carrinho/meucarrinho", async (req, res) => {
     let dados = req.body;
 
     try {
-        const categoria = await index.meuCarrinho(dados.id);
+        const carrinhos = await index.meuCarrinho(dados.id);
         return res.json({
             mensagem: "Carrinho Localizado",
-            categoria
+            carrinhos
         });
     } catch (e) {
         return res.json({
@@ -69,9 +69,9 @@ router.put("/carrinho/meucarrinho", async (req, res) => {
 router.delete('/carrinho/:id', async (req, res) => {
     const dados = req.params;
     try {
-        const categoria = await index.deleteCarrinho(dados.id);
+        const carrinho = await index.deleteCarrinho(dados.id);
 
-        if (categoria) {
+        if (carrinho) {
             res.json({ message: "Produto removido com sucesso" });
         } else {
             res.status(404).json({ message: "Produto não encontrado" });
