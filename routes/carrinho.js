@@ -51,9 +51,9 @@ router.put("/carrinho", async (req, res) => {
 router.put("/carrinho/meucarrinho", async (req, res) => {
     let dados = req.body;
 
-        const carrinhos = await index.meuCarrinho(dados.id);
-        if(produto){
-            res.json(carrinhos);
+        const carrinho = await index.meuCarrinho(dados.id);
+        if(carrinho){
+            res.json(carrinho);
         }else{
             res.status(404).json({message: "Carrinho não encontrado"});
         }
