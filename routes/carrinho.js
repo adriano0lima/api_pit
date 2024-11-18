@@ -51,18 +51,12 @@ router.put("/carrinho", async (req, res) => {
 router.put("/carrinho/meucarrinho", async (req, res) => {
     let dados = req.body;
 
-    try {
         const carrinhos = await index.meuCarrinho(dados.id);
-        return res.json({
-            mensagem: "Carrinho Localizado",
-            carrinhos
-        });
-    } catch (e) {
-        return res.json({
-            mensagem: `Erro: ${e}
-            Carrinho não Localizado`
-        });
-    }
+        if(produto){
+            res.json(carrinhos);
+        }else{
+            res.status(404).json({message: "Carrinho não encontrado"});
+        }
 });
 
 //Rota delete -> deleteCarrinho
