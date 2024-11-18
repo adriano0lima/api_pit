@@ -209,7 +209,7 @@ async function meuCarrinho(uID) {
 }
 
 async function adicinarCarrinho(qtd, p, u) {
-    const consultaCarrinho = await Carrinho.findOne(e, { where: { email: e } });
+    const consultaCarrinho = await Carrinho.findOne(e, { where: { idUsuario: u } });
     if (!consultaCarrinho == null) {
         return null
     } else {
