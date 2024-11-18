@@ -28,7 +28,7 @@ router.post("/carrinho", async (req, res) => {
     }
 });
 
-//Rota put -> updateCategoria
+//Rota put -> updateCarrinho
 router.put("/carrinho", async (req, res) => {
     let dados = req.body;
 
@@ -42,6 +42,25 @@ router.put("/carrinho", async (req, res) => {
         return res.json({
             mensagem: `Erro: ${e}
             Carrinho não Editado`
+        });
+    }
+});
+
+
+//Rota put -> meuCarrinho
+router.put("/carrinho/meucarrinho", async (req, res) => {
+    let dados = req.body;
+
+    try {
+        const categoria = await index.meuCarrinho(dados.id);
+        return res.json({
+            mensagem: "Carrinho Localizado",
+            categoria
+        });
+    } catch (e) {
+        return res.json({
+            mensagem: `Erro: ${e}
+            Carrinho não Localizado`
         });
     }
 });
